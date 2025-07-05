@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        table{
+            margin: 0 auto;
+            width: 600px;
+        }
+        th, td{
+            text-align: center;
+            padding: 10px;
+        }
+        .add{
+            margin-left: 300px;
+            padding-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center"> Kitoblar uz </h1>
+
+    <a href="add/" class="add"><button>Kitob qo'shish</button></a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>T/r</th>
+                <th>Image</th>
+                <th>Kitob nomi</th>
+                <th>Yozuvchi</th>
+                <th>Narxi</th>
+                <th>Tahrirlash</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><img src="{{ book.image.url }}" width="30px" alt=""></td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.price }}$</td>
+                    <td>
+                        <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

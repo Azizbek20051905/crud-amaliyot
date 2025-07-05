@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 300px;
+        }
+        input, button{
+            margin-bottom: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 align="center">Kitob qo'shish</h1>
+    <center>
+        <form action="/add/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image">
+            <input type="text" name="title" placeholder="Kitob Nomi">
+            <input type="text" name="author" placeholder="Kitob Yozuvchisi">
+            <input type="text" name="price" placeholder="Kitob Narxi">
+            <button>Qo'shish</button>
+        </form>
+    </center>
+</body>
+</html>
