@@ -19,4 +19,13 @@ def add_book(request):
         return redirect('/')
     
     return render(request, 'add_book.html')
+
+def update_book(request, id):
+    book = Book.objects.get(id=id)
+
+
+    context = {
+        'book':book
+    }
+    return render(request, 'update.html', context)
     
