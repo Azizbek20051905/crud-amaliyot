@@ -23,9 +23,29 @@ def add_book(request):
 def update_book(request, id):
     book = Book.objects.get(id=id)
 
+    if request.method == "POST":
+        image = request.FILES.get("image")
+        title = request.POST['title']
+        author = request.POST['author']
+        price = request.POST['price']
 
+        book.title = title
+        book.author = author
+        book.price = price
+        
+        if image:
+            book.image = image
+        
+        book.save()
+        return redirect('/')
+        
     context = {
         'book':book
     }
     return render(request, 'update.html', context)
-    
+
+def delete_book(request, id):
+    book = Book.objects.filter(id=id)
+    book.delete()
+
+    return redirect('/')

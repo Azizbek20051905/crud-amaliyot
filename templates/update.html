@@ -17,15 +17,18 @@
 <body>
     <h1 align="center">{{ book.title }} Kitobini o'zgartirish</h1>
     <center>
-        <form action="/update/" method="post" enctype="multipart/form-data">
+        <form action="/update/{{ book.id }}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="images">
                 <img src="{{ book.image.url }}" width="30%" alt="">
             </label>
             <input type="file" name="image" id="images" hidden><br>
-            <input type="text" name="title" placeholder="Kitob Nomi">
-            <input type="text" name="author" placeholder="Kitob Yozuvchisi">
-            <input type="text" name="price" placeholder="Kitob Narxi">
+            <label for="">kitob nomi</label><br>
+            <input type="text" name="title" value="{{ book.title }}" placeholder="Kitob Nomi"><br>
+            <label for="">Yozuvchi ismi</label><br>
+            <input type="text" name="author" value="{{ book.author }}" placeholder="Kitob Yozuvchisi"><br>
+            <label for="">Narxi</label><br>
+            <input type="text" name="price" value="{{ book.price }}" placeholder="Kitob Narxi"><br>
             <button>O'zgartirish</button>
         </form>
     </center>
